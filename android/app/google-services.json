@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "480594779038",
+    "project_id": "todo-fb-b5-exp",
+    "storage_bucket": "todo-fb-b5-exp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:480594779038:android:0feeeafbe7a0dd5613148f",
+        "android_client_info": {
+          "package_name": "com.aa.todofbb5"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbuWXvhiqWP5MpKSH8-z5B377Rr51nXZU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
