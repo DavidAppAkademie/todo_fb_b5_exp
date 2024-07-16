@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -28,12 +29,24 @@ class _TodoScreenState extends State<TodoScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          actions: [
+            IconButton(
+              onPressed: () async {
+                await FirebaseAuth.instance.signOut();
+              },
+              icon: Icon(Icons.logout),
+            ),
+          ],
+        ),
         floatingActionButton: FloatingActionButton(
           onPressed: () async {
             // erstelle Firestore Document fuer das Todo
             final randomId =
                 FirebaseFirestore.instance.collection('test').doc().id;
             await FirebaseFirestore.instance
+                .collection('users')
+                .doc(FirebaseAuth.instance.currentUser!.uid)
                 .collection('todos')
                 .doc(randomId)
                 .set(
@@ -56,6 +69,8 @@ class _TodoScreenState extends State<TodoScreen> {
                 child: StreamBuilder(
                   // lies alle Dokumente aus der Collection 'todos'
                   stream: FirebaseFirestore.instance
+                      .collection('users')
+                      .doc(FirebaseAuth.instance.currentUser!.uid)
                       .collection('todos')
                       .snapshots(),
                   builder: (context, snapshot) {
